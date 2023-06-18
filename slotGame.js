@@ -118,11 +118,13 @@ function spin() {
 
                 if (win === false ){
                     console.log("You lose, Try Again");
-                    balance = balance - bet
-                }
+                    balance = balance - bet}
             }
 
         } else{
+            totalWin = 0
+            winPerRotation = 0
+            
             for( let i = 0; i < rotations; i++){
                 result = []
 
@@ -176,15 +178,14 @@ function spin() {
   };
   
   
-  function findConsecutiveSameNumbers(arr , line) {
+function findConsecutiveSameNumbers(arr , line) {
     let result = []
 
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === arr[i + 1]) { // Проверяваме колко пъти се повтаря число
-        consecutiveCount++;
-      
+        if (arr[i] === arr[i + 1]) {
+        consecutiveCount++;  
     } else {
-      if (consecutiveCount >= 3 && consecutiveCount <= 5) { //Ако се повтаря между 3-5 път сетваме result 
+      if (consecutiveCount >= 3 && consecutiveCount <= 5) { 
         
         result.push({ number: arr[i], count: consecutiveCount });
         win = true
@@ -193,10 +194,10 @@ function spin() {
         balance = balance + (bet * symbols[result[0].number][result[0].count-1])
         winPerRotation = winPerRotation + (bet * symbols[result[0].number][result[0].count-1])
         totalWin = winPerRotation
-      }
-        consecutiveCount = 1; //Ако се повтаря по-малко от 3 пъти го сетвае 1
+            }
+        consecutiveCount = 1;
+        }
     }
-  }
 }
 
 
